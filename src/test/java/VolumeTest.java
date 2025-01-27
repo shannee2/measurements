@@ -42,11 +42,21 @@ public class VolumeTest {
     }
 
     @Test
+    public void testReturnUnit_WhenInput1Decilitre(){
+        Volume volume = new Volume(1, Unit.DECILITRE);
+
+        Unit unit = volume.getUnit();
+
+        assertEquals(Unit.DECILITRE, unit);
+    }
+
+    @Test
     public void testReturnLitreValue_For1MilliLitre(){
         Volume volume = new Volume(1, Unit.MILLILITRE);
 
-        Volume volumeInLitre = new Volume(volume.convertTo(Unit.LITRE).getValue(), Unit.LITRE);
+        Volume volumeInLitre = volume.convertTo(Unit.LITRE);
+        double value = volumeInLitre.getValue();
 
-        assertEquals(0.001, volumeInLitre.getValue());
+        assertEquals(0.001, value);
     }
 }
