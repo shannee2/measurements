@@ -13,4 +13,10 @@ public class VolumeTest {
     public void testThrowException_WhenInput0(){
         assertThrows(IllegalArgumentException.class, ()-> new Volume(0, Unit.CENTILITRE));
     }
+
+    @Test
+    public void testReturnValue_WhenInput1(){
+        Volume volume = new Volume(1, Unit.CENTILITRE);
+        assertEquals(1, volume.getValue());
+    }
 }

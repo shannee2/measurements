@@ -9,10 +9,10 @@ public class Volume {
             throw new IllegalArgumentException("Value cannot be less than or equal to 0");
         }
         this.value = value;
-        this.unit =unit;
+        this.unit = unit;
     }
 
-
-
-
+    public double getValue() {
+        return this.value;
+    }
 }
