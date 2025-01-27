@@ -9,6 +9,8 @@ public class VolumeTest {
         assertThrows(IllegalArgumentException.class, ()-> new Volume(-1, Unit.CENTILITRE));
     }
 
-
-
+    @Test
+    public void testThrowException_WhenInput0(){
+        assertThrows(IllegalArgumentException.class, ()-> new Volume(0, Unit.CENTILITRE));
+    }
 }
