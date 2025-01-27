@@ -25,4 +25,10 @@ public class VolumeTest {
         Volume volume = new Volume(100, Unit.CENTILITRE);
         assertEquals(100, volume.getValue());
     }
+
+    @Test
+    public void testReturnLitreValue_For1MilliLitre(){
+        Volume volume = new Volume(1, Unit.MILLILITRE);
+        assertEquals(0.001, volume.convertTo(Unit.LITRE));
+    }
 }
