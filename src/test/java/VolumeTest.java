@@ -59,4 +59,14 @@ public class VolumeTest {
 
         assertEquals(0.001, value);
     }
+
+    @Test
+    public void testReturnDecilitreValue_For1MilliLitre(){
+        Volume volume = new Volume(1, Unit.MILLILITRE);
+
+        Volume volumeInDecilitre = volume.convertTo(Unit.DECILITRE);
+        double value = volumeInDecilitre.getValue();
+
+        assertEquals(0.01, value);
+    }
 }

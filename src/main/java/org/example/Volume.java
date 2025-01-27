@@ -16,6 +16,10 @@ public class Volume {
         return this.value;
     }
 
+    public Unit getUnit() {
+        return this.unit;
+    }
+
     public Volume convertTo(Unit unit) {
         double valueInMillilitre = this.toMillilitre();
         return switch (unit) {
@@ -39,9 +43,5 @@ public class Volume {
             case KILOLITRE -> this.value * 1000000;
             default -> throw new IllegalStateException("Unexpected value: " + this.unit);
         };
-    }
-
-    public Unit getUnit() {
-        return this.unit;
     }
 }
