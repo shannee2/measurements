@@ -17,18 +17,36 @@ public class VolumeTest {
     @Test
     public void testReturnValue_WhenInput1(){
         Volume volume = new Volume(1, Unit.CENTILITRE);
+
+        double value = volume.getValue();
+
         assertEquals(1, volume.getValue());
     }
 
     @Test
     public void testReturnValue_WhenInput100(){
         Volume volume = new Volume(100, Unit.CENTILITRE);
-        assertEquals(100, volume.getValue());
+
+        double value = volume.getValue();
+
+        assertEquals(100, value);
+    }
+
+    @Test
+    public void testReturnUnit_WhenInput1Centilitre(){
+        Volume volume = new Volume(1, Unit.CENTILITRE);
+
+        Unit unit = volume.getUnit();
+
+        assertEquals(Unit.CENTILITRE, unit);
     }
 
     @Test
     public void testReturnLitreValue_For1MilliLitre(){
         Volume volume = new Volume(1, Unit.MILLILITRE);
-        assertEquals(0.001, volume.convertTo(Unit.LITRE));
+
+        Volume volumeInLitre = new Volume(volume.convertTo(Unit.LITRE).getValue(), Unit.LITRE);
+
+        assertEquals(0.001, volumeInLitre.getValue());
     }
 }
