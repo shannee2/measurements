@@ -19,4 +19,10 @@ public class VolumeTest {
         Volume volume = new Volume(1, Unit.CENTILITRE);
         assertEquals(1, volume.getValue());
     }
+
+    @Test
+    public void testReturnValue_WhenInput100(){
+        Volume volume = new Volume(100, Unit.CENTILITRE);
+        assertEquals(100, volume.getValue());
+    }
 }
