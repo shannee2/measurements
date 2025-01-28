@@ -1,6 +1,6 @@
 package org.example;
 
-public class Volume implements Measurement {
+public class Volume implements Measurement <VolumeUnit> {
     private final double value;
     private final VolumeUnit volumeUnit;
 
