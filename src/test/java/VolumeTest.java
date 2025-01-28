@@ -89,4 +89,24 @@ public class VolumeTest {
 
         assertEquals(0.0001, value);
     }
+
+    @Test
+    public void testReturnKilolitreValue_For48MilliLitre(){
+        Volume volume = new Volume(48, Unit.MILLILITRE);
+
+        Volume volumeInKilolitre = volume.convertTo(Unit.KILOLITRE);
+        double value = volumeInKilolitre.getValue();
+
+        assertEquals(0.000048, value);
+    }
+
+    @Test
+    public void testReturnMillilitreValue_For4_5Centilitre(){
+        Volume volume = new Volume(4.5, Unit.CENTILITRE);
+
+        Volume volumeInMillilitre = volume.convertTo(Unit.MILLILITRE);
+        double value = volumeInMillilitre.getValue();
+
+        assertEquals(45, value);
+    }
 }
