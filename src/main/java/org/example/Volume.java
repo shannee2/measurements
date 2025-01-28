@@ -1,8 +1,12 @@
 package org.example;
 
-public class Volume {
+public class Volume implements Measurement {
     private final double value;
     private final Unit unit;
+
+    public double getValue() {
+        return value;
+    }
 
     public Volume(double value, Unit unit) {
         if(value <=0){
@@ -10,14 +14,6 @@ public class Volume {
         }
         this.value = value;
         this.unit = unit;
-    }
-
-    public double getValue() {
-        return this.value;
-    }
-
-    public Unit getUnit() {
-        return this.unit;
     }
 
     public Volume convertTo(Unit unit) {
@@ -43,5 +39,17 @@ public class Volume {
             case KILOLITRE -> this.value * 1000000;
             default -> throw new IllegalStateException("Unexpected value: " + this.unit);
         };
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Volume volume = (Volume) obj;
+        return Double.compare(volume.value, value) == 0 && unit == volume.unit;
     }
 }

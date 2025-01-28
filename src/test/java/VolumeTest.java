@@ -15,59 +15,24 @@ public class VolumeTest {
     }
 
     @Test
-    public void testReturnValue_WhenInput1(){
-        Volume volume = new Volume(1, Unit.CENTILITRE);
-
-        double value = volume.getValue();
-
-        assertEquals(1, volume.getValue());
-    }
-
-    @Test
-    public void testReturnValue_WhenInput100(){
-        Volume volume = new Volume(100, Unit.CENTILITRE);
-
-        double value = volume.getValue();
-
-        assertEquals(100, value);
-    }
-
-    @Test
-    public void testReturnUnit_WhenInput1Centilitre(){
-        Volume volume = new Volume(1, Unit.CENTILITRE);
-
-        Unit unit = volume.getUnit();
-
-        assertEquals(Unit.CENTILITRE, unit);
-    }
-
-    @Test
-    public void testReturnUnit_WhenInput1Decilitre(){
-        Volume volume = new Volume(1, Unit.DECILITRE);
-
-        Unit unit = volume.getUnit();
-
-        assertEquals(Unit.DECILITRE, unit);
-    }
-
-    @Test
     public void testReturnLitreValue_For1MilliLitre(){
         Volume volume = new Volume(1, Unit.MILLILITRE);
 
         Volume volumeInLitre = volume.convertTo(Unit.LITRE);
-        double value = volumeInLitre.getValue();
+        Volume expectedVolume = new Volume(0.001, Unit.LITRE);
 
-        assertEquals(0.001, value);
-    }
+        assertEquals(expectedVolume, volumeInLitre);
+
+        }
 
     @Test
     public void testReturnDecilitreValue_For1MilliLitre(){
         Volume volume = new Volume(1, Unit.MILLILITRE);
 
         Volume volumeInDecilitre = volume.convertTo(Unit.DECILITRE);
-        double value = volumeInDecilitre.getValue();
+        Volume expectedVolume = new Volume(0.01, Unit.DECILITRE);
 
-        assertEquals(0.01, value);
+        assertEquals(expectedVolume, volumeInDecilitre);
     }
 
     @Test
@@ -75,9 +40,9 @@ public class VolumeTest {
         Volume volume = new Volume(1, Unit.MILLILITRE);
 
         Volume volumeInCentilitre = volume.convertTo(Unit.CENTILITRE);
-        double value = volumeInCentilitre.getValue();
+        Volume expectedVolume = new Volume(0.1, Unit.CENTILITRE);
 
-        assertEquals(0.1, value);
+        assertEquals(expectedVolume, volumeInCentilitre);
     }
 
     @Test
@@ -85,9 +50,9 @@ public class VolumeTest {
         Volume volume = new Volume(1, Unit.MILLILITRE);
 
         Volume volumeInDecalitre = volume.convertTo(Unit.DECALITRE);
-        double value = volumeInDecalitre.getValue();
+        Volume expectedVolume = new Volume(0.0001, Unit.DECALITRE);
 
-        assertEquals(0.0001, value);
+        assertEquals(expectedVolume, volumeInDecalitre);
     }
 
     @Test
@@ -95,9 +60,9 @@ public class VolumeTest {
         Volume volume = new Volume(48, Unit.MILLILITRE);
 
         Volume volumeInKilolitre = volume.convertTo(Unit.KILOLITRE);
-        double value = volumeInKilolitre.getValue();
+        Volume expectedVolume = new Volume(0.000048, Unit.KILOLITRE);
 
-        assertEquals(0.000048, value);
+        assertEquals(expectedVolume, volumeInKilolitre);
     }
 
     @Test
@@ -105,8 +70,7 @@ public class VolumeTest {
         Volume volume = new Volume(4.5, Unit.CENTILITRE);
 
         Volume volumeInMillilitre = volume.convertTo(Unit.MILLILITRE);
-        double value = volumeInMillilitre.getValue();
+        Volume expectedVolume = new Volume(45, Unit.MILLILITRE);
 
-        assertEquals(45, value);
-    }
+        assertEquals(expectedVolume, volumeInMillilitre);}
 }
