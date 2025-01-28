@@ -1,6 +1,6 @@
 package org.example;
 
-public enum Unit {
+public enum VolumeUnit {
     MILLILITRE,
     CENTILITRE,
     DECILITRE,
