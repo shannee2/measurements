@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Mass implements Measurement <MassUnit>{
     private final double value;
     private final MassUnit massUnit;
@@ -12,7 +14,7 @@ public class Mass implements Measurement <MassUnit>{
         this.massUnit = massUnit;
     }
 
-    public Measurement convertTo(MassUnit massUnit) {
+    public Mass convertTo(MassUnit massUnit) {
         double valueInMilligram = this.toMilligram();
         return switch (massUnit) {
             case MILLIGRAM -> new Mass(valueInMilligram, MassUnit.MILLIGRAM);
@@ -47,5 +49,10 @@ public class Mass implements Measurement <MassUnit>{
         }
         Mass mass = (Mass) obj;
         return Double.compare(mass.value, value) == 0 && massUnit == mass.massUnit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, massUnit);
     }
 }

@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Volume implements Measurement <VolumeUnit> {
     private final double value;
     private final VolumeUnit volumeUnit;
@@ -47,5 +49,10 @@ public class Volume implements Measurement <VolumeUnit> {
         }
         Volume volume = (Volume) obj;
         return Double.compare(volume.value, value) == 0 && volumeUnit == volume.volumeUnit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, volumeUnit);
     }
 }
