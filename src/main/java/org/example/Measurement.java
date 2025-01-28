@@ -17,7 +17,7 @@ public class Measurement implements IMeasurement {
     @Override
     public IMeasurement convertTo(Unit unit) {
         if(unit.getClass() != this.unit.getClass()) {
-            throw new IllegalArgumentException("Cannot convert between different types of units");
+            throw new IllegalArgumentException("Incompatible types of units");
         }
         return new Measurement(value * this.unit.getConversionFactor() / unit.getConversionFactor(), unit);
     }

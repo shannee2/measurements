@@ -16,6 +16,13 @@ public class MassTest {
     }
 
     @Test
+    public void testThrowException_WhenConvertingToDifferentUnitType() {
+        Measurement mass = new Measurement(1, MassUnit.GRAM);
+
+        assertThrows(IllegalArgumentException.class, () -> mass.convertTo(VolumeUnit.LITRE));
+    }
+
+    @Test
     public void testReturnKilogramValue_For1Milligram() {
         Measurement mass = new Measurement(1, MassUnit.MILLIGRAM);
 

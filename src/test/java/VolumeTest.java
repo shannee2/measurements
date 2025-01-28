@@ -1,3 +1,4 @@
+import org.example.MassUnit;
 import org.example.Measurement;
 import org.example.VolumeUnit;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,13 @@ public class VolumeTest {
     @Test
     public void testThrowException_WhenInput0(){
         assertThrows(IllegalArgumentException.class, ()-> new Measurement(0, VolumeUnit.CENTILITRE));
+    }
+
+    @Test
+    public void testThrowException_WhenConvertingToDifferentUnitType(){
+        Measurement volume = new Measurement(1, VolumeUnit.LITRE);
+
+        assertThrows(IllegalArgumentException.class, ()-> volume.convertTo(MassUnit.GRAM));
     }
 
     @Test
