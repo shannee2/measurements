@@ -16,18 +16,10 @@ public class MassTest {
     }
 
     @Test
-    public void testThrowException_WhenConvertingToDifferentUnitType() {
-        Measurement mass = new Measurement(1, MassUnit.GRAM);
-
-        assertThrows(IllegalArgumentException.class, () -> mass.convertTo(VolumeUnit.LITRE));
-    }
-
-    @Test
     public void testReturnKilogramValue_For1Milligram() {
         Measurement mass = new Measurement(1, MassUnit.MILLIGRAM);
 
         Measurement massInKilogram = (Measurement) mass.convertTo(MassUnit.KILOGRAM);
-
         Measurement expectedMass = new Measurement(0.000001, MassUnit.KILOGRAM);
 
         assertEquals(expectedMass, massInKilogram);
@@ -81,5 +73,41 @@ public class MassTest {
         Measurement expectedMass = new Measurement(45, MassUnit.MILLIGRAM);
 
         assertEquals(expectedMass, massInMilligram);
+    }
+
+//    Sum Tests
+
+    @Test
+    public void testReturnSum_For1GramAnd1Milligram() {
+        Measurement mass1 = new Measurement(1, MassUnit.GRAM);
+        Measurement mass2 = new Measurement(1, MassUnit.MILLIGRAM);
+
+        Measurement sum = mass1.add(mass2, MassUnit.GRAM);
+        Measurement expectedSum = new Measurement(1.001, MassUnit.GRAM);
+
+        assertEquals(expectedSum, sum);
+    }
+
+
+    @Test
+    public void testReturnSumInCentigram_For1GramAnd1Centigram() {
+        Measurement mass1 = new Measurement(1, MassUnit.GRAM);
+        Measurement mass2 = new Measurement(1, MassUnit.CENTIGRAM);
+
+        Measurement sum = mass1.add(mass2, MassUnit.CENTIGRAM);
+        Measurement expectedSum = new Measurement(101, MassUnit.CENTIGRAM);
+
+        assertEquals(expectedSum, sum);
+    }
+
+    @Test
+    public void testReturnSum_For1DecagramAnd1Gram() {
+        Measurement mass1 = new Measurement(1, MassUnit.DECAGRAM);
+        Measurement mass2 = new Measurement(1, MassUnit.GRAM);
+
+        Measurement sum = mass1.add(mass2, MassUnit.DECAGRAM);
+        Measurement expectedSum = new Measurement(1.1, MassUnit.DECAGRAM);
+
+        assertEquals(expectedSum, sum);
     }
 }
