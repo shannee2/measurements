@@ -13,22 +13,16 @@ public class Temperature extends Measurement<TemperatureUnit> {
 
     @Override
     public Temperature convertTo(TemperatureUnit toUnit) {
-        double convertedValue = switch (this.unit) {
-            case CELSIUS -> switch (toUnit) {
-                case CELSIUS -> this.value;
-                case FAHRENHEIT -> (this.value * 9/5) + 32;
-                case KELVIN -> this.value + 273.15;
-            };
-            case FAHRENHEIT -> switch (toUnit) {
-                case CELSIUS -> (this.value - 32) * 5/9;
-                case FAHRENHEIT -> this.value;
-                case KELVIN -> (this.value - 32) * 5/9 + 273.15;
-            };
-            case KELVIN -> switch (toUnit) {
-                case CELSIUS -> this.value - 273.15;
-                case FAHRENHEIT -> (this.value - 273.15) * 9/5 + 32;
-                case KELVIN -> this.value;
-            };
+        double valueInCelsius = switch (this.unit) {
+            case CELSIUS -> this.value;
+            case FAHRENHEIT -> (this.value - 32) * 5 / 9;
+            case KELVIN -> this.value - 273.15;
+        };
+
+        double convertedValue = switch (toUnit) {
+            case CELSIUS -> valueInCelsius;
+            case FAHRENHEIT -> (valueInCelsius * 9 / 5) + 32;
+            case KELVIN -> valueInCelsius + 273.15;
         };
 
         return new Temperature(convertedValue, toUnit);

@@ -10,7 +10,7 @@ public class Measurement<U extends Unit> {
         if (value <= 0 && !(unit instanceof TemperatureUnit)) {
             throw new IllegalArgumentException("Value must be positive");
         }
-        if (unit ==TemperatureUnit.KELVIN && value < 0) {
+        if (unit == TemperatureUnit.KELVIN && value < 0) {
             throw new IllegalArgumentException("Value must be positive");
         }
         this.value = value;
@@ -31,7 +31,7 @@ public class Measurement<U extends Unit> {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Measurement<?> that = (Measurement<?>) obj;
+        Measurement<U> that = (Measurement<U>) obj;
         return Double.compare(that.value, value) == 0 && unit.equals(that.unit);
     }
 
